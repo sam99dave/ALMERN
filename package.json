@@ -1,0 +1,25 @@
+{
+  "name": "almern",
+  "version": "1.0.0",
+  "description": "Alumini Website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sam99dave/ALMERN.git"
+  },
+  "author": "Samuel Davis, Anuj Purandare, Abhishek Nagvekar, Kaustubh Shetty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sam99dave/ALMERN/issues"
+  },
+  "homepage": "https://github.com/sam99dave/ALMERN#readme",
+  "dependencies": {
+    "uuid": "^3.3.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.3"
+  }
+}
