@@ -2,15 +2,18 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const connectDB = require("./config/db");
 
-mongoose.connect("mongodb://localhost:27017/userdb", { useNewUrlParser: true });
+//mongoose.connect("mongodb://localhost:27017/userdb", { useNewUrlParser: true });
 
-let db = mongoose.connection;
+//let db = mongoose.connection;
+
+connectDB();
 
 // Check connection
-db.once("open", (req, res) => {
+/*db.once("open", (req, res) => {
   console.log("Connected to MongoDB");
-});
+});*/
 
 const app = express();
 
