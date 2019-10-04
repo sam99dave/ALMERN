@@ -23,6 +23,7 @@ app.use(bodyParser.json());
 // Set a static folder
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/alumini", require("./routes/api/alumini"));
+app.use("/api/feedback", require("./routes/api/feedback"));
 
 const PORT = process.env.PORT || 5000;
 
