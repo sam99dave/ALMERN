@@ -2,13 +2,18 @@ const express = require("express");
 const path = require("path");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const connectDB = require("./config/db");
 
 //mongoose.connect("mongodb://localhost:27017/userdb", { useNewUrlParser: true });
 
 //let db = mongoose.connection;
 
-connectDB();
+const db = require("./config/default").mongoURI;
+
+// Connect to MongoDB
+mongoose
+  .connect(db)
+  .then(() => console.log("MongoDB Connected"))
+  .catch(err => console.log(err));
 
 // Check connection
 /*db.once("open", (req, res) => {

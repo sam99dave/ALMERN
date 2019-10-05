@@ -26,33 +26,47 @@
         >
       </h1>
       <ul>
-        <li><a href="aluminis.html">Our Aluminis</a></li>
+        <li><a href="profiles.html">Our Aluminis</a></li>
         <li><a href="signup.html">Sign Up</a></li>
         <li><a href="login.html">Login</a></li>
       </ul>
     </nav>
     <section class="container">
-      <div class="alert alert-danger">
-        Invalid credentials
-      </div>
-      <h1 class="large text-primary">Sign In</h1>
-      <p class="lead"><i class="fas fa-user"></i> Sign into Your Account</p>
+      <h1 class="large text-primary">Payment Gateway</h1>
+      <p class="lead"><i class="fas fa-money-check-alt"></i> Payment Details</p>
       <form class="form" action="dashboard.html">
         <div class="form-group">
+          <label for="cardNumber">Card Number</label>
           <input
-            type="email"
-            placeholder="Email Address"
-            name="email"
+            type="text"
+            placeholder="Valid Card Number"
+            name="cardNumber"
+            autocomplete="cc-number"
             required
+            autofocus
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="password"
+            placeholder="Password"
+            name="password"
+            minLength="6"
           />
         </div>
         <div class="form-group">
-          <input type="password" placeholder="Password" name="password" />
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            name="password2"
+            minLength="6"
+          />
         </div>
-        <input type="submit" class="btn btn-primary" value="Login" />
+        <input type="submit" class="btn btn-primary" value="Register" />
       </form>
       <p class="my-1">
-        Don't have an account? <a href="signup.html">Sign Up</a>
+        Already have an account? <a href="login.html">Sign In</a>
       </p>
     </section>
   </body>
