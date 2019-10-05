@@ -59,6 +59,8 @@ router.post("/login", (req, res) => {
     if (password != user.password) {
       errors.password = "Password Doesnt Match";
       return res.status(404).json(errors);
+    } else {
+      res.sendFile("D:/Github/ALMERN/public/dashboard.html");
     }
   });
 });
