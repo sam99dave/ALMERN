@@ -29,9 +29,7 @@ router.post("/register", (req, res) => {
 
       newUser
         .save()
-        .then(user =>
-          res.sendFile("D://Github/ALMERN/public/create-profile.html")
-        )
+        .then(user => res.redirect("/create-profile.html"))
         .catch(err => console.log(err));
     }
   });
@@ -60,7 +58,7 @@ router.post("/login", (req, res) => {
       errors.password = "Password Doesnt Match";
       return res.status(404).json(errors);
     } else {
-      res.sendFile("D:/Github/ALMERN/public/dashboard.html");
+      res.redirect("/dashboard.html");
     }
   });
 });
