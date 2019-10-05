@@ -7,10 +7,10 @@ const FeedBack = require("../../models/Feedback");
 router.post("/submit", (req, res) => {
   const newFeedback = new FeedBack({
     feedback: req.body.feedback,
-    name: req.body.name
+    email: req.body.email
   });
 
-  newFeedback.save();
+  newFeedback.save().then(res.redirect("/dashboard.html"));
 });
 
 module.exports = router;

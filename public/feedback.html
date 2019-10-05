@@ -51,7 +51,11 @@
         <div class="bg-primary p">
           <h3>Give Your Feedback...</h3>
         </div>
-        <form class="form my-1">
+        <form
+          class="form my-1"
+          action="http://localhost:5000/api/feedback/submit"
+          method="POST"
+        >
           <div class="form-group">
             <input
               type="email"
@@ -61,7 +65,7 @@
             />
           </div>
           <textarea
-            name="text"
+            name="feedback"
             cols="30"
             rows="5"
             placeholder="Enter your Feedback here"

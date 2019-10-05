@@ -50,7 +50,11 @@
         profile stand out
       </p>
       <small>* = required field</small>
-      <form class="form">
+      <form
+        class="form"
+        action="http://localhost:5000/api/info/createprofile"
+        method="POST"
+      >
         <div class="form-group">
           <select name="status">
             <option value="0">* Select Professional Status</option>
