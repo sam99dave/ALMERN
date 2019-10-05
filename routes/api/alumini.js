@@ -29,7 +29,9 @@ router.post("/register", (req, res) => {
 
       newUser
         .save()
-        .then(user => res.send("User Added"))
+        .then(user =>
+          res.sendFile("D://Github/ALMERN/public/create-profile.html")
+        )
         .catch(err => console.log(err));
     }
   });
