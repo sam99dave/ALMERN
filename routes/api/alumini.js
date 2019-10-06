@@ -72,7 +72,7 @@ router.post("/login", (req, res) => {
         jwt.sign(
           payload,
           keys.secretOrKey,
-          { expiresIn: 360000000000 },
+          { expiresIn: 36000 },
           (err, token) => {
             res.redirect("/dashboard.html");
           }
@@ -82,14 +82,19 @@ router.post("/login", (req, res) => {
         return res.status(400).json(errors);
       }
     });
-
-    /*if (password != user.password) {
-      errors.password = "Password Doesnt Match";
-      return res.status(404).json(errors);
-    } else {
-      res.redirect("/dashboard.html");
-    }*/
   });
 });
+
+router.get(
+  "/current",
+  passport.authenticate("jwt", { session: false }),
+  (req, res) => {
+    res.json({
+      id: req.user.id,
+      name: req.user.name,
+      email: req.user.email
+    });
+  }
+);
 
 module.exports = router;
