@@ -1,6 +1,9 @@
 const express = require("express");
-
 const router = express.Router();
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const keys = require("../../config/default");
+const passport = require("passport");
 
 const validateLoginInput = require("../../validation/login");
 const validateRegisterInput = require("../../validation/register");
@@ -27,10 +30,16 @@ router.post("/register", (req, res) => {
         password: req.body.password
       });
 
-      newUser
-        .save()
-        .then(user => res.redirect("/create-profile.html"))
-        .catch(err => console.log(err));
+      bcrypt.genSalt(10, (err, salt) => {
+        bcrypt.hash(newUser.password, salt, (err, hash) => {
+          if (err) throw err;
+          newUser.password = hash;
+          newUser
+            .save()
+            .then(user => res.redirect("/create-profile.html"))
+            .catch(err => console.log(err));
+        });
+      });
     }
   });
 });
@@ -54,12 +63,32 @@ router.post("/login", (req, res) => {
     }
 
     // Check password
-    if (password != user.password) {
+    bcrypt.compare(password, user.password).then(isMatch => {
+      if (isMatch) {
+        // User Matched
+        const payload = { id: user.id, name: user.name }; // Create JWT Payload
+
+        // Sign Token
+        jwt.sign(
+          payload,
+          keys.secretOrKey,
+          { expiresIn: 360000000000 },
+          (err, token) => {
+            res.redirect("/dashboard.html");
+          }
+        );
+      } else {
+        errors.password = "Password incorrect";
+        return res.status(400).json(errors);
+      }
+    });
+
+    /*if (password != user.password) {
       errors.password = "Password Doesnt Match";
       return res.status(404).json(errors);
     } else {
       res.redirect("/dashboard.html");
-    }
+    }*/
   });
 });
 
