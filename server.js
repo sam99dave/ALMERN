@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/api/alumini", require("./routes/api/alumini"));
 app.use("/api/feedback", require("./routes/api/feedback"));
 app.use("/api/info", require("./routes/api/info"));
+app.use("/api/payment", require("./routes/api/payment"));
 
 const PORT = process.env.PORT || 5000;
 
@@ -38,5 +39,27 @@ const PORT = process.env.PORT || 5000;
 /*app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "index.html"));
 });*/
+
+// Testing Payment Gateway
+/*app.post("/charge", (req, res) => {
+  var token = req.body.stripeToken;
+  var chargeAmount = req.body.chargeAmount;
+  var charge = stripe.charges.create(
+    {
+      amount: chargeAmount,
+      currency: "gbp",
+      source: token
+    },
+    (err, charge) => {
+      if (err & (err.type === "StripeCardError")) {
+        console.log("Your card was declined");
+      }
+    }
+  );
+
+  console.log("Your payment was successful");
+  res.redirect("/dashboard.html");
+});
+*/
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));

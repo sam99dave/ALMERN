@@ -26,17 +26,29 @@
         >
       </h1>
       <ul>
-        <li><a href="profiles.html">Our Aluminis</a></li>
+        <li><a href="aluminis.html">Our Aluminis</a></li>
         <li><a href="signup.html">Sign Up</a></li>
         <li><a href="login.html">Login</a></li>
       </ul>
     </nav>
     <section class="container">
-      <h1 class="large text-primary">Payment</h1>
-      <p class="lead"><i class="fas fa-money-check-alt"></i> Payment Details</p>
-      <form class="form" action="donate.html">
-        <input type="submit" class="btn btn-primary" value="Register" />
-      </form>
+      <h1 class="large text-primary">Donate</h1>
+      <input
+        type="text"
+        name="donate"
+        placeholder="Enter the Donation Amount"
+      />
     </section>
+    <form action="http://localhost:5000/api/payment/charge" method="POST">
+      <script
+        src="https://checkout.stripe.com/checkout.js"
+        class="stripe-button"
+        data-key="pk_test_C8f05ZwMkFN40KrF7UH4syUC00neHF68O0"
+        data-amount="1000"
+        data-local="auto"
+        data-currency="gbp"
+      ></script>
+      <input type="hidden" name="chargeAmount" value="1000" />
+    </form>
   </body>
 </html>
